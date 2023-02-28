@@ -37,6 +37,11 @@
   }
 }
 
+
+html * {
+  font-size: 14px;
+}
+
 .container {
   border: 1px solid;
   max-width: 1200px;
@@ -84,7 +89,7 @@ ul.sideBarMenu li:after {
 }
 
 .MainContent {
-  background: #c3c7c5;
+  background: #ecf6f4;
   width: 100%;
   height: 100%;
   box-sizing: border-box;
@@ -114,7 +119,7 @@ ul.sideBarMenu li:after {
 .TableControls input,
 .TableControls button {
   padding: 8px;
-  font-size: 16px;
+  /* font-size: 16px; */
 }
 .TableControls button {
   background-color: #fff;
@@ -132,12 +137,12 @@ ul.sideBarMenu li:after {
 .tableTitle {
   font-size: 20px;
   font-weight: bold;
-  border-bottom: 3px solid #ddd;
+  border-bottom: 1px solid #dfdfdf;
   margin-bottom: 12px;
   padding-bottom: 8px;
 }
 .TableControls {
-  border-bottom: 3px solid #ddd;
+  border-bottom: 1px solid #dfdfdf;
   padding-bottom: 12px;
 }
 .TableControlsWrapper {
@@ -155,12 +160,15 @@ ul.sideBarMenu li:after {
 }
 .TableData th {
   padding: 16px 12px;
-  border: 1px solid;
-  text-align: left;
+ 
+  text-align: center;
+  border-bottom: 1px solid #dfdfdf;
 }
 .TableData tr td {
-  background: #d2d0e0;
+  background: #fafafa;
   padding: 16px 12px;
+  text-align: center;
+  border-bottom: 1px solid #dfdfdf;
 }
 .TableData {
   margin-top: 12px;
@@ -173,4 +181,57 @@ ul.sideBarMenu li:after {
 }
 .editIconAction img {
   max-width: 20px;
+}
+.ActionControls {
+  display: flex;
+  width: 100%;
+  justify-content: space-evenly;
+  margin-bottom: 5px;
+}
+.ActionLabel {
+  width: 15%;
+  /* border: 1px solid; */
+  text-align: left;
+  padding: 2px 16px;
+}
+.ActionInput{
+  width: 70%;
+  /* border: 1px solid; */
+}
+.ActionInput select {
+  width: 100%;
+  padding: 12px;
+  border-radius: 5px;
+}
+.ActionInput textarea {
+  width: 95%;
+    border-radius: 5px;
+    font-family: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen',
+    'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue',
+    sans-serif;
+    padding: 8px 12px;
+}
+.ActionInput button {
+  width: 100%;
+  padding: 8px;
+  background: #0f132e;
+  color: #fff;
+  /* font-size: 16px; */
+}
+.ActionInputSave button {
+  width: 150px;
+  padding: 8px;
+  background: #002a57;
+  color: #fff;
+  /* font-size: 16px; */
+  border-radius: 5px;
+}
+.ActionControlsSave {
+  text-align: center;
+}
+.ExpandAreaAction {
+  background: #fff;
+  padding: 16px;
+  box-shadow: 0px 0px 4px #8e7b7b;
+  border-radius: 4px;
 }

@@ -1,6 +1,5 @@
 // import namor from "namor";
-import editIcon from './../Images/edit.png';
-
+import { editIconUri, editIconUriconst } from '../Constant';
 
 
 const range = len => {
@@ -23,7 +22,7 @@ const newPerson = () => {
     status: "Open",
     updatedDate: "12/12/2015",
     comments: "View Comments",
-    actions: <> <div className='editIconAction'> <img src={editIcon} /> </div></>,
+    actions: <> <div className='editIconAction'> <img src={editIconUri} /> </div></>,
   
   };
 }; 

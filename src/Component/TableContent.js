@@ -4,6 +4,7 @@ import { useTable, useExpanded } from "react-table";
 import makeData from "./makeData";
 import ReactTable from "react-table";
 import SampleData from "./SampleData";
+import ActionExpand from "./ActionExpand";
 
 function Table({ columns: userColumns, data, renderRowSubComponent }) {
   const {
@@ -23,7 +24,7 @@ function Table({ columns: userColumns, data, renderRowSubComponent }) {
   );
 
   return (
-    <table {...getTableProps()}>
+    <table {...getTableProps()} border="0" cellspacing="0" cellpadding="0">
       <thead>
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>
@@ -93,23 +94,23 @@ function Table({ columns: userColumns, data, renderRowSubComponent }) {
 function TableContent() {
   const columns = React.useMemo(
     () => [
-      {
-        // Build our expander column
-        id: "expander", // Make sure it has an ID
-        Header: ({ getToggleAllRowsExpandedProps, isAllRowsExpanded }) => (
-          <span {...getToggleAllRowsExpandedProps()}>
-            {isAllRowsExpanded ? "👇" : "👉"}
-          </span>
-        ),
-        Cell: ({ row }) => (
-          // Use Cell to render an expander for each row.
-          // We can use the getToggleRowExpandedProps prop-getter
-          // to build the expander.
-          <span {...row.getToggleRowExpandedProps()}>
-            {row.isExpanded ? "👇" : "👉"}
-          </span>
-        ),
-      },
+      // {
+      //   // Build our expander column
+      //   id: "expander", // Make sure it has an ID
+      //   Header: ({ getToggleAllRowsExpandedProps, isAllRowsExpanded }) => (
+      //     <span {...getToggleAllRowsExpandedProps()}>
+      //       {isAllRowsExpanded ? "👇" : "👉"}
+      //     </span>
+      //   ),
+      //   Cell: ({ row }) => (
+      //     // Use Cell to render an expander for each row.
+      //     // We can use the getToggleRowExpandedProps prop-getter
+      //     // to build the expander.
+      //     <span {...row.getToggleRowExpandedProps()}>
+      //       {row.isExpanded ? "👇" : "👉"}
+      //     </span>
+      //   ),
+      // },
       {
         Header: "Name",
         columns: [
@@ -171,9 +172,10 @@ function TableContent() {
 
   const renderRowSubComponent = React.useCallback(
     ({ row }) => (
-      <h3>
-        my god, I can't belive I spent a whole afternoon reading the wrong stuff
-      </h3>
+      <>
+      <ActionExpand />
+      </>
+      
     ),
     []
   );
