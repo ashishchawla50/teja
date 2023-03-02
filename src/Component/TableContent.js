@@ -5,14 +5,23 @@ import makeData from "./makeData";
 import ReactTable from "react-table";
 import SampleData from "./SampleData";
 import ActionExpand from "./ActionExpand";
+import { COULMN_HEADER, getExpandableFields } from "../Constant";
+import CommentExpand from "./CommentExpand";
 
-function Table({ columns: userColumns, data, renderRowSubComponent }) {
+function Table({
+  columns: userColumns,
+  data,
+  renderRowSubComponent,
+  setCurrentExpandableField,
+  currentExpandableField,
+}) {
   const {
     getTableProps,
     getTableBodyProps,
     headerGroups,
     rows,
     prepareRow,
+
     visibleColumns,
     state: { expanded },
   } = useTable(
@@ -23,13 +32,25 @@ function Table({ columns: userColumns, data, renderRowSubComponent }) {
     useExpanded
   );
 
+  console.log("expanded", expanded);
+
+  // rows.map((data, i) => {
+  //   console.log("aaa", data, i);
+  // });
+
   return (
     <table {...getTableProps()} border="0" cellspacing="0" cellpadding="0">
       <thead>
         {headerGroups.map((headerGroup) => (
           <tr {...headerGroup.getHeaderGroupProps()}>
             {headerGroup.headers.map((column) => (
-              <th {...column.getHeaderProps()}>{column.render("Header")}</th>
+              <>
+                {column.parent ? (
+                  <th {...column.getHeaderProps()}>
+                    {column.render("Header")}
+                  </th>
+                ) : null}
+              </>
             ))}
           </tr>
         ))}
@@ -43,24 +64,33 @@ function Table({ columns: userColumns, data, renderRowSubComponent }) {
                 {row.cells.map((cell, index) => {
                   return (
                     <>
-                      {cell && cell.column.getHeaderProps() && cell.column.getHeaderProps()?.key === `header_actions` ? (
-                        <>
-                        
-                          <td
-                            {...cell.getCellProps()}
-                            {...row.getToggleRowExpandedProps()}
-                          >
-                            {cell.render("Cell")}
-                          </td>
-                        </>
-                      ) : (
-                        <>
-                         
-                          <td {...cell.getCellProps()}>
-                            {cell.render("Cell")}
-                          </td>
-                        </>
-                      )}
+                      {
+                        // cell &&
+                        // cell.column.getHeaderProps() &&
+                        // cell.column.getHeaderProps()?.key === `header_actions`
+                        getExpandableFields()?.includes(cell.column.id) ? (
+                          <>
+                            <td
+                              {...cell.getCellProps()}
+                              {...row.getToggleRowExpandedProps()}
+                            >
+                              <div
+                                onClick={() => {
+                                  setCurrentExpandableField(cell.column.id);
+                                }}
+                              >
+                                {cell.render("Cell")}
+                              </div>
+                            </td>
+                          </>
+                        ) : (
+                          <>
+                            <td {...cell.getCellProps()}>
+                              {cell.render("Cell")}
+                            </td>
+                          </>
+                        )
+                      }
                     </>
                   );
                 })}
@@ -79,7 +109,11 @@ function Table({ columns: userColumns, data, renderRowSubComponent }) {
                           table instance. But for this example, we'll just
                           pass the row
                         */}
-                    {renderRowSubComponent({ row })}
+                    {renderRowSubComponent({
+                      row,
+                      currentExpandableField,
+                      expanded,
+                    })}
                   </td>
                 </tr>
               ) : null}
@@ -116,7 +150,7 @@ function TableContent() {
         columns: [
           {
             Header: "Created Date",
-            accessor: "createdDate",
+            accessor: COULMN_HEADER.CREATED_DATE,
 
             expander: true,
             Expander: ({ isExpanded, ...rest }) => (
@@ -127,7 +161,7 @@ function TableContent() {
           },
           {
             Header: "Is webPage Helpful",
-            accessor: "isWebPageHelpful",
+            accessor: COULMN_HEADER.IS_WEB_PAGE_HELPFUL,
           },
         ],
       },
@@ -136,23 +170,23 @@ function TableContent() {
         columns: [
           {
             Header: "Feedback",
-            accessor: "feedback",
+            accessor: COULMN_HEADER.FEEDBACK,
           },
           {
             Header: "Status",
-            accessor: "status",
+            accessor: COULMN_HEADER.STATUS,
           },
           {
             Header: "Updated Date",
-            accessor: "updatedDate",
+            accessor: COULMN_HEADER.UPDATED_DATE,
           },
           {
             Header: "Comments",
-            accessor: "comments",
+            accessor: COULMN_HEADER.COMMENTS,
           },
           {
             Header: "Actions",
-            accessor: "actions",
+            accessor: COULMN_HEADER.ACTIONS,
             expander: true,
             Expander: ({ isExpanded, ...rest }) => (
               <div>
@@ -162,23 +196,46 @@ function TableContent() {
           },
         ],
       },
-    
     ],
     []
   );
 
   const data = React.useMemo(() => makeData(10), []);
-  console.log(data);
+  // console.log(data);
 
-  const renderRowSubComponent = React.useCallback(
-    ({ row }) => (
-      <>
-      <ActionExpand />
-      </>
-      
-    ),
-    []
-  );
+  // const renderRowSubComponent = React.useCallback(
+  //   ({ row }) => (
+  //     <>
+  //       <ActionExpand />
+  //     </>
+  //   ),
+  //   []
+  // );
+
+  const [currentExpandableField, setCurrentExpandableField] =
+    React.useState("");
+
+  const getCurrentExplableAble = (currentField, expanded) => {
+    // console.log("xxx", currentField);
+    switch (currentField) {
+      case COULMN_HEADER.ACTIONS:
+        return <>Action area</>;
+      case COULMN_HEADER.FEEDBACK:
+        return <>FEEDBACK area</>;
+      case COULMN_HEADER.COMMENTS:
+        return <>COMMENTS area</>;
+      default:
+        return <CommentExpand />;
+    }
+  };
+  const renderRowSubComponent = (rows, currentField, expanded) => {
+    // console.log("xyz", rows, currentField, expanded);
+    if (expanded && expanded[rows.row.id]) {
+      rows.row.toggleRowExpanded(true);
+    }
+    return getCurrentExplableAble(currentField, expanded);
+  };
+
   return (
     <>
       {/* <SampleData /> */}
@@ -186,6 +243,8 @@ function TableContent() {
         columns={columns}
         data={data}
         renderRowSubComponent={renderRowSubComponent}
+        currentExpandableField={currentExpandableField}
+        setCurrentExpandableField={setCurrentExpandableField}
       />
     </>
   );

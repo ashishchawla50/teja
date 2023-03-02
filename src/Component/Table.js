@@ -12,22 +12,18 @@ function Table(props) {
         <div className="TableInner">
           <div className="TableControls">
             <div className="TableControlsWrapper">
-            <div className="recordCount">
-Viewing : 1-5 of 24 Records
-</div>
-<div className="SearchFilter">
-<DatePicker
-              selected={startDate}
-              onChange={(date) => setStartDate(date)}
-            />
-            <div className="SearchBox">
-              <input type={"text"} placeholder="Search By File Name" />
-              <button>Search</button>
+              <div className="recordCount">Viewing : 1-5 of 24 Records</div>
+              <div className="SearchFilter">
+                <DatePicker
+                  selected={startDate}
+                  onChange={(date) => setStartDate(date)}
+                />
+                <div className="SearchBox">
+                  <input type={"text"} placeholder="Search By File Name" />
+                  <button>Search</button>
+                </div>
+              </div>
             </div>
-</div>
-            </div>
-          
-           
           </div>
           <div className="TableData">
             <TableContent />
