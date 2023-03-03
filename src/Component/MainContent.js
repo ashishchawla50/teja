@@ -1,6 +1,6 @@
 import React from "react";
+import Feedback from "./Feedback";
 import Header from "./Header";
-import Table from "./Table";
 
 function MainContent(props) {
   return (
@@ -10,7 +10,7 @@ function MainContent(props) {
           <div className="tableheaader">
             <div className="tableTitle">Feedback</div>
             <div className="TableContent">
-              <Table />
+              <Feedback />
             </div>
           </div>
         </div>
