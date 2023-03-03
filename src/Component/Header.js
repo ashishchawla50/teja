@@ -7,15 +7,7 @@ function Header(props) {
         <div className="pageInfo">Feedback</div>
 
         <div className="AccountInfo">
-          Hi{" "}
-          <a
-            onClick={() => {
-              javaScript: void 0;
-            }}
-          >
-            {" "}
-            Teja{" "}
-          </a>
+          Hi <div className="link"> Teja </div>
         </div>
       </div>
     </>

@@ -17,15 +17,21 @@ const newPerson = () => {
     [COULMN_HEADER.CREATED_DATE]: "12/12/2015",
 
     [COULMN_HEADER.IS_WEB_PAGE_HELPFUL]: "No",
-    [COULMN_HEADER.FEEDBACK]: "View Feedback",
+    [COULMN_HEADER.FEEDBACK]: (
+      <>
+        <div className="link">View Feedback</div>
+      </>
+    ),
     [COULMN_HEADER.STATUS]: "Open",
     [COULMN_HEADER.UPDATED_DATE]: "12/12/2015",
-    [COULMN_HEADER.COMMENTS]: "View Comments",
+    [COULMN_HEADER.COMMENTS]: (
+      <>
+        <div className="link">View Comments</div>
+      </>
+    ),
     [COULMN_HEADER.ACTIONS]: (
       <>
-        {" "}
         <div className="editIconAction">
-          {" "}
           <img src={editIconUri} />{" "}
         </div>
       </>
