@@ -3,12 +3,13 @@ import React from "react";
 import { useTable, useExpanded } from "react-table";
 import makeData from "./makeData";
 import ReactTable from "react-table";
-import SampleData from "./SampleData";
+
 import ActionExpand from "./ActionExpand";
 import { COULMN_HEADER, data, columns } from "../Constant";
 import CommentExpand from "./CommentExpand";
 
 import TableData from "./TableData";
+import FeedbackExpand from "./FeedbackExpand";
 
 function TableContent() {
   const columns = React.useMemo(
@@ -78,17 +79,29 @@ function TableContent() {
 
   React.useEffect(() => {}, [counter]);
 
-  const getCurrentExpandableArea = (currentField, expanded) => {
+  const getCurrentExpandableArea = (currentField) => {
     // console.log("xxx", currentField);
     switch (currentField) {
       case COULMN_HEADER.ACTIONS:
-        return <>Action area</>;
+        return (
+          <>
+            <ActionExpand />
+          </>
+        );
       case COULMN_HEADER.FEEDBACK:
-        return <>FEEDBACK area</>;
+        return (
+          <>
+            <FeedbackExpand />
+          </>
+        );
       case COULMN_HEADER.COMMENTS:
-        return <>COMMENTS area</>;
+        return (
+          <>
+            <CommentExpand />
+          </>
+        );
       default:
-        return <CommentExpand />;
+        return <ActionExpand />;
     }
   };
   const renderRowSubComponent = (rows, currentField, expanded) => {
@@ -101,7 +114,6 @@ function TableContent() {
 
   return (
     <>
-      {/* <SampleData /> */}
       <TableData
         columns={columns}
         data={data}

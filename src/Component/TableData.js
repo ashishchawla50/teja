@@ -36,6 +36,14 @@ function TableData({
   //   console.log("aaa", data, i);
   // });
 
+  const columnClick = (currentRow, currentCol, clickEvent) => {
+    console.log("xxx", currentRow, currentCol, clickEvent);
+    currentRow.currentSelectedColumn = currentCol;
+    if (currentRow.isExpanded && currentCol !== currentExpandableField) {
+    } else {
+      clickEvent();
+    }
+  };
   return (
     <table {...getTableProps()} border="0" cellSpacing="0" cellPadding="0">
       <thead key={Math.random()}>
@@ -60,6 +68,8 @@ function TableData({
             <React.Fragment key={Math.random()}>
               <tr key={Math.random()}>
                 {row.cells.map((cell, index) => {
+                  const eachRow = { ...row.getToggleRowExpandedProps() };
+
                   return (
                     <React.Fragment key={Math.random()}>
                       {
@@ -70,8 +80,15 @@ function TableData({
                           <>
                             <td
                               {...cell.getCellProps()}
-                              {...row.getToggleRowExpandedProps()}
+                              // {...row.getToggleRowExpandedProps()}
                               key={Math.random()}
+                              onClick={() => {
+                                columnClick(
+                                  row,
+                                  cell.column.id,
+                                  eachRow.onClick
+                                );
+                              }}
                             >
                               <div
                                 onClick={() => {
@@ -101,7 +118,7 @@ function TableData({
                       If the row is in an expanded state, render a row with a
                       column that fills the entire length of the table.
                     */}
-              {row.isExpanded && expandComponent ? (
+              {row.isExpanded && row.currentSelectedColumn ? (
                 <tr>
                   <td colSpan={visibleColumns.length}>
                     {/*
@@ -116,7 +133,9 @@ function TableData({
                       currentExpandableField,
                       expanded,
                     })} */}
-                    <>{expandComponent}</>
+
+                    {/* <>{expandComponent}</> */}
+                    {getCurrentExpandableArea(row.currentSelectedColumn)}
                   </td>
                 </tr>
               ) : null}
