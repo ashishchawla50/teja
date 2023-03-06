@@ -9,21 +9,35 @@ const range = (len) => {
   return arr;
 };
 
+function randomDate(start, end) {
+  return new Date(
+    start.getTime() + Math.random() * (end.getTime() - start.getTime())
+  );
+}
+
+const d = randomDate(new Date(2012, 0, 1), new Date());
+
 const newPerson = () => {
   const statusChance = Math.random();
   return {
     // firstName: namor.generate({ words: 1, numbers: 0 }),
     // lastName: namor.generate({ words: 1, numbers: 0 }),
-    [COULMN_HEADER.CREATED_DATE]: "12/12/2015",
+    [COULMN_HEADER.CREATED_DATE]: randomDate(
+      new Date(2012, 0, 1),
+      new Date()
+    )?.toLocaleDateString(),
 
-    [COULMN_HEADER.IS_WEB_PAGE_HELPFUL]: "No",
+    [COULMN_HEADER.IS_WEB_PAGE_HELPFUL]: Math.random() < 0.5 ? "Yes" : "No",
     [COULMN_HEADER.FEEDBACK]: (
       <>
         <div className="link">View Feedback</div>
       </>
     ),
-    [COULMN_HEADER.STATUS]: "Open",
-    [COULMN_HEADER.UPDATED_DATE]: "12/12/2015",
+    [COULMN_HEADER.STATUS]: Math.random() < 0.5 ? "Open" : "Closed",
+    [COULMN_HEADER.UPDATED_DATE]: randomDate(
+      new Date(2012, 0, 1),
+      new Date()
+    )?.toLocaleDateString(),
     [COULMN_HEADER.COMMENTS]: (
       <>
         <div className="link">View Comments</div>
