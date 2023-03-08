@@ -2,10 +2,14 @@ import React from "react";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
+import makeData from "./makeData";
 import TableContent from "./TableContent";
 
 function Feedback(props) {
   const [startDate, setStartDate] = React.useState(new Date());
+  const data = React.useMemo(() => makeData(10), []);
+  const [tableData, setTableData] = React.useState(data);
+  //console.log("xxx", data);
   return (
     <>
       <div className="Table">
@@ -26,7 +30,7 @@ function Feedback(props) {
             </div>
           </div>
           <div className="TableData">
-            <TableContent />
+            <TableContent setTableData={setTableData} tableData={tableData} />
           </div>
         </div>
       </div>

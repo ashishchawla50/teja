@@ -19,3 +19,9 @@ export const getExpandableFields = () => {
     COULMN_HEADER.FEEDBACK,
   ];
 };
+
+export const FEEDBACK_STATUS = {
+  OPEN: "OPEN",
+  IN_PROGRESS: "IN_PROGRESS",
+  CLOSED: "CLOSED",
+};

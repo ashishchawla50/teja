@@ -345,3 +345,10 @@ span.settingsDropdown ul.menuGroup {
 li.settingLink {
   font-size: 10px;
 }
+button{
+  cursor: pointer;
+}
+button[disabled] {
+  background: #d5d4d4;
+    cursor: not-allowed;
+}
