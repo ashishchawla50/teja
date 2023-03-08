@@ -1,7 +1,7 @@
 import React from "react";
 
 import { useTable, useExpanded } from "react-table";
-import makeData from "./makeData";
+import makeData, { newRecord } from "./makeData";
 import ReactTable from "react-table";
 
 import ActionExpand from "./ActionExpand";
@@ -71,37 +71,91 @@ function TableContent() {
 
   const data = React.useMemo(() => makeData(10), []);
 
+  // console.log("new record", newRecord());
+
   const [currentExpandableField, setCurrentExpandableField] =
     React.useState("");
 
   const [counter, setCounter] = React.useState(0);
   const [expandComponent, setExpandComponnet] = React.useState();
+  const [tableData, setTableData] = React.useState(data);
+  // console.log("xxx", data);
 
   React.useEffect(() => {}, [counter]);
-
-  const getCurrentExpandableArea = (currentField) => {
+  React.useEffect(() => {
+    //console.log("tabel darta update", tableData);
+  }, [tableData]);
+  const getCurrentExpandableArea = (currentField, row) => {
     // console.log("xxx", currentField);
+
+    // if (row) {
+    //   console.log(row);
+    //   row.commentData = [{ date: "4/8/2023", name: "Teja" }];
+    //   console.log(row);
+    // }
+
+    const updateActionComment = (updatedRow) => {
+      row = { ...updatedRow };
+      // console.log(row, tableData);
+
+      const updatedDate = [...tableData];
+      if (
+        row &&
+        row.commentData &&
+        row.commentData[0] &&
+        updatedDate[row.index].commentData
+      ) {
+        updatedDate[row.index].commentData.push(row.commentData[0]);
+      } else {
+        updatedDate[row.index].commentData = row.commentData;
+      }
+
+      if (updatedDate[row.index].commentData) {
+        updatedDate[row.index].status =
+          updatedDate[row.index].commentData[
+            updatedDate[row.index].commentData.length - 1
+          ].status;
+      }
+
+      // updatedDate[row.index] = { ...row?.values };
+      // updatedDate[row.index].commentData = row.commentData;
+      setTableData(updatedDate);
+      setCounter(counter + 1);
+    };
+
     switch (currentField) {
       case COULMN_HEADER.ACTIONS:
         return (
           <>
-            <ActionExpand />
+            <ActionExpand
+              row={row}
+              updateActionComment={updateActionComment}
+              counter={counter}
+              data={tableData}
+            />
           </>
         );
       case COULMN_HEADER.FEEDBACK:
         return (
           <>
-            <FeedbackExpand />
+            <FeedbackExpand counter={counter} data={tableData} />
           </>
         );
       case COULMN_HEADER.COMMENTS:
         return (
           <>
-            <CommentExpand />
+            <CommentExpand row={row} data={tableData} counter={counter} />
           </>
         );
       default:
-        return <ActionExpand />;
+        return (
+          <ActionExpand
+            row={row}
+            updateActionComment={updateActionComment}
+            counter={counter}
+            data={tableData}
+          />
+        );
     }
   };
   const renderRowSubComponent = (rows, currentField, expanded) => {
@@ -116,7 +170,7 @@ function TableContent() {
     <>
       <TableData
         columns={columns}
-        data={data}
+        data={tableData}
         renderRowSubComponent={renderRowSubComponent}
         currentExpandableField={currentExpandableField}
         setCurrentExpandableField={setCurrentExpandableField}

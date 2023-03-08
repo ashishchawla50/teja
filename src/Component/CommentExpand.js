@@ -1,6 +1,8 @@
 import React from "react";
 
-function CommentExpand(props) {
+function CommentExpand({ data, row }) {
+  // props.data[props.row.index];
+  // console.log(props.data);
   return (
     <>
       <div className="CommentExpand">
@@ -18,6 +20,18 @@ function CommentExpand(props) {
               <td>Closed</td>
               <td>This feedback is not relevent</td>
             </tr>
+            {data && row && data[row.index] && data[row.index].commentData
+              ? data[row.index].commentData.map((e) => (
+                  <>
+                    <tr>
+                      <td>{e.date}</td>
+                      <td>{e.name}</td>
+                      <td>{e.status}</td>
+                      <td>{e.comment}</td>
+                    </tr>
+                  </>
+                ))
+              : null}
           </table>
         </div>
       </div>

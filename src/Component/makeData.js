@@ -17,7 +17,7 @@ function randomDate(start, end) {
 
 const d = randomDate(new Date(2012, 0, 1), new Date());
 
-const newPerson = () => {
+export const newRecord = () => {
   const statusChance = Math.random();
   return {
     // firstName: namor.generate({ words: 1, numbers: 0 }),
@@ -33,7 +33,7 @@ const newPerson = () => {
         <div className="link">View Feedback</div>
       </>
     ),
-    [COULMN_HEADER.STATUS]: Math.random() < 0.5 ? "Open" : "Closed",
+    [COULMN_HEADER.STATUS]: "Open",
     [COULMN_HEADER.UPDATED_DATE]: randomDate(
       new Date(2012, 0, 1),
       new Date()
@@ -58,7 +58,7 @@ export default function makeData(...lens) {
     const len = lens[depth];
     return range(len).map((d) => {
       return {
-        ...newPerson(),
+        ...newRecord(),
         subRows: lens[depth + 1] ? makeDataLevel(depth + 1) : undefined,
       };
     });

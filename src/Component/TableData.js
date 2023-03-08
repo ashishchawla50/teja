@@ -30,6 +30,22 @@ function TableData({
     useExpanded
   );
 
+  const [tableLocalData, setTableLocalData] = React.useState(data);
+  // React.useEffect(() => {
+  //   let temp = [...data];
+  //   temp = temp.map((e) => {
+  //     return {
+  //       ...e,
+  //       status: e.commentData
+  //         ? e.commentData[e.commentData.length - 1].status
+  //         : "OPEN",
+  //     };
+  //   });
+  //   console.log("after update", temp);
+  //   setTableLocalData(temp);
+  // }, [data]);
+
+  // console.log("data in table", data);
   // console.log("expanded", expanded);
 
   // rows.map((data, i) => {
@@ -37,8 +53,9 @@ function TableData({
   // });
 
   const columnClick = (currentRow, currentCol, clickEvent) => {
-    console.log("xxx", currentRow, currentCol, clickEvent);
+    //console.log("xxx", currentRow, currentCol, clickEvent);
     currentRow.currentSelectedColumn = currentCol;
+    currentRow.commentData = [];
     if (currentRow.isExpanded && currentCol !== currentExpandableField) {
     } else {
       clickEvent();
@@ -135,7 +152,7 @@ function TableData({
                     })} */}
 
                     {/* <>{expandComponent}</> */}
-                    {getCurrentExpandableArea(row.currentSelectedColumn)}
+                    {getCurrentExpandableArea(row.currentSelectedColumn, row)}
                   </td>
                 </tr>
               ) : null}
