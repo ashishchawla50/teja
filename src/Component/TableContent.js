@@ -11,66 +11,7 @@ import CommentExpand from "./CommentExpand";
 import TableData from "./TableData";
 import FeedbackExpand from "./FeedbackExpand";
 
-function TableContent() {
-  const columns = React.useMemo(
-    () => [
-      {
-        Header: "Name",
-        columns: [
-          {
-            Header: "Created Date",
-            accessor: COULMN_HEADER.CREATED_DATE,
-
-            expander: true,
-            Expander: ({ isExpanded, ...rest }) => (
-              <div>
-                {isExpanded ? <span>&#x2299;</span> : <span>&#x2295;</span>}
-              </div>
-            ),
-          },
-          {
-            Header: "Is webPage Helpful",
-            accessor: COULMN_HEADER.IS_WEB_PAGE_HELPFUL,
-          },
-        ],
-      },
-      {
-        Header: "info",
-        columns: [
-          {
-            Header: "Feedback",
-            accessor: COULMN_HEADER.FEEDBACK,
-          },
-          {
-            Header: "Status",
-            accessor: COULMN_HEADER.STATUS,
-          },
-          {
-            Header: "Updated Date",
-            accessor: COULMN_HEADER.UPDATED_DATE,
-          },
-          {
-            Header: "Comments",
-            accessor: COULMN_HEADER.COMMENTS,
-          },
-          {
-            Header: "Actions",
-            accessor: COULMN_HEADER.ACTIONS,
-            expander: true,
-            Expander: ({ isExpanded, ...rest }) => (
-              <div>
-                {isExpanded ? <span>&#x2299;</span> : <span>&#x2295;</span>}
-              </div>
-            ),
-          },
-        ],
-      },
-    ],
-    []
-  );
-
-  const data = React.useMemo(() => makeData(10), []);
-
+function TableContent({ columns, setTableData, tableData }) {
   // console.log("new record", newRecord());
 
   const [currentExpandableField, setCurrentExpandableField] =
@@ -78,7 +19,7 @@ function TableContent() {
 
   const [counter, setCounter] = React.useState(0);
   const [expandComponent, setExpandComponnet] = React.useState();
-  const [tableData, setTableData] = React.useState(data);
+
   // console.log("xxx", data);
 
   React.useEffect(() => {}, [counter]);
@@ -98,28 +39,30 @@ function TableContent() {
       row = { ...updatedRow };
       // console.log(row, tableData);
 
-      const updatedDate = [...tableData];
+      const updatedTableData = [...tableData];
+
       if (
         row &&
         row.commentData &&
         row.commentData[0] &&
-        updatedDate[row.index].commentData
+        updatedTableData[row.index].commentData
       ) {
-        updatedDate[row.index].commentData.push(row.commentData[0]);
+        updatedTableData[row.index].commentData.push(row.commentData[0]);
       } else {
-        updatedDate[row.index].commentData = row.commentData;
+        updatedTableData[row.index].commentData = row.commentData;
       }
 
-      if (updatedDate[row.index].commentData) {
-        updatedDate[row.index].status =
-          updatedDate[row.index].commentData[
-            updatedDate[row.index].commentData.length - 1
+      if (updatedTableData[row.index].commentData) {
+        updatedTableData[row.index].status =
+          updatedTableData[row.index].commentData[
+            updatedTableData[row.index].commentData.length - 1
           ].status;
       }
+      updatedTableData[row.index].updatedDate = new Date().toLocaleDateString();
 
       // updatedDate[row.index] = { ...row?.values };
       // updatedDate[row.index].commentData = row.commentData;
-      setTableData(updatedDate);
+      setTableData(updatedTableData);
       setCounter(counter + 1);
     };
 

@@ -145,16 +145,28 @@ span.menuLabel:hover{
 }
 .TableControls button {
   background-color: #fff;
-  border: 1px solid #000;
-    border-radius: 0px 5px 5px 0px;
+  border: 2px solid #76a6b4;
+    border-radius:5px;
+    width: 110px;
+    margin-left: 12px;
+    color: #002a57;
+
+}
+.TableControls button.solid {
+  background: #002a57;
+  color: #fff;
+  border: 1px solid #002a57;
+}
+.searchControls {
+  display: flex;
 }
 .TableControls .react-datepicker-wrapper input {
-  border: 1px solid #000;
+  border: 2px solid #76a6b4;
   border-radius: 5px;
 }
 .SearchBox input {
-  border-radius: 5px 0px 0px 5px;
-  border: 1px solid #000;
+  border-radius: 5px;
+  border: 2px solid #76a6b4;
 }
 .tableTitle {
   font-size: 20px;

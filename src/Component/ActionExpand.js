@@ -32,9 +32,15 @@ function ActionExpand(props) {
                 value={actionValue}
               >
                 <option value={0}>Select One</option>
-                <option value={FEEDBACK_STATUS.OPEN}>Open</option>
-                <option value={FEEDBACK_STATUS.IN_PROGRESS}>In Progress</option>
-                <option value={FEEDBACK_STATUS.CLOSED}> Closed</option>
+                <option value={FEEDBACK_STATUS.OPEN}>
+                  {FEEDBACK_STATUS.OPEN}
+                </option>
+                <option value={FEEDBACK_STATUS.IN_PROGRESS}>
+                  {FEEDBACK_STATUS.IN_PROGRESS}
+                </option>
+                <option value={FEEDBACK_STATUS.CLOSED}>
+                  {FEEDBACK_STATUS.CLOSED}
+                </option>
               </select>
             </div>
           </div>

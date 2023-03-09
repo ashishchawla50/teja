@@ -21,7 +21,7 @@ export const getExpandableFields = () => {
 };
 
 export const FEEDBACK_STATUS = {
-  OPEN: "OPEN",
-  IN_PROGRESS: "IN_PROGRESS",
-  CLOSED: "CLOSED",
+  OPEN: "Open",
+  IN_PROGRESS: "In Progress",
+  CLOSED: "Closed",
 };
