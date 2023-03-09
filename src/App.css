@@ -364,3 +364,23 @@ button[disabled] {
   background: #d5d4d4;
     cursor: not-allowed;
 }
+.titleContent {
+  display: flex;
+}
+.titleContent .icon {
+  transform: scale(1.25);
+  display: flex;
+  align-items: center;
+  padding:0 16px;
+
+}
+.titleContent .icon:after {
+  content: "";
+  width: 1px;
+  height: 75%;
+  background: #dfdfdf;
+  display: inline-block;
+}
+.titleContent .icon svg {
+  padding-right: 8px;
+}

@@ -1,10 +1,18 @@
 import React from "react";
+import { HomeIcon } from "../Constant";
 
 function Header(props) {
   return (
     <>
       <div className="Header">
-        <div className="pageInfo">Feedback</div>
+        <div className="pageInfo">
+          <div className="titleContent">
+            <div className="icon">
+              <HomeIcon />
+            </div>
+            <div className="titleText">Feedback</div>
+          </div>
+        </div>
 
         <div className="AccountInfo">
           Hi <div className="link"> Teja </div>
