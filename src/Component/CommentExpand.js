@@ -15,9 +15,9 @@ function CommentExpand({ data, row }) {
               <th>Comment</th>
             </thead>
             <tr>
-              <td>2023-02-15</td>
-              <td>First Name, Last Name</td>
-              <td>Closed</td>
+              <td> {new Date().toLocaleDateString()} </td>
+              <td>Teja</td>
+              <td>Open</td>
               <td>This feedback is not relevent</td>
             </tr>
             {data && row && data[row.index] && data[row.index].commentData
