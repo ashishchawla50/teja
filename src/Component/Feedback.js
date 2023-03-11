@@ -2,7 +2,7 @@ import React from "react";
 import DatePicker from "react-datepicker";
 
 import "react-datepicker/dist/react-datepicker.css";
-import { COULMN_HEADER } from "../Constant";
+import { CalenderSVG, COULMN_HEADER } from "../Constant";
 import makeData from "./makeData";
 
 import TableContent from "./TableContent";
@@ -94,10 +94,16 @@ function Feedback(props) {
                 Viewing : 1-5 of {tableData.length} Records
               </div>
               <div className="SearchFilter">
-                <DatePicker
-                  selected={startDate}
-                  onChange={(date) => setStartDate(date)}
-                />
+                <div className="DateInput">
+                  <DatePicker
+                    selected={startDate}
+                    onChange={(date) => setStartDate(date)}
+                  />
+                  <div className="calenderImg">
+                    <CalenderSVG />
+                  </div>
+                </div>
+
                 <div className="SearchBox">
                   <input
                     type={"text"}

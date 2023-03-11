@@ -1,0 +1,392 @@
+$color_1: white;
+$color_2: #61dafb;
+$color_3: #002a57;
+$color_4: #fff;
+$color_5: blue;
+$color_6: #005974;
+$font-family_1: -apple-system, BlinkMacSystemFont, 'Segoe UI', 'Roboto', 'Oxygen', 'Ubuntu', 'Cantarell', 'Fira Sans', 'Droid Sans', 'Helvetica Neue', sans-serif;
+$background-color_1: #282c34;
+$background-color_2: #fff;
+
+@keyframes App-logo-spin {
+	from {
+		transform: rotate(0deg);
+	}
+	to {
+		transform: rotate(360deg);
+	}
+}
+.App {
+	text-align: center;
+}
+.App-logo {
+	height: 40vmin;
+	pointer-events: none;
+}
+.App-header {
+	background-color: $background-color_1;
+	min-height: 100vh;
+	display: flex;
+	flex-direction: column;
+	align-items: center;
+	justify-content: center;
+	font-size: calc(10px + 2vmin);
+	color: $color_1;
+}
+.App-link {
+	color: $color_2;
+}
+html {
+	* {
+		font-size: 14px;
+	}
+}
+.container {
+	max-width: 1200px;
+	margin: 0 auto;
+	display: flex;
+	width: 100%;
+}
+.sideBar {
+	width: 20%;
+	&:before {
+		content: "";
+		border-left: 1px solid #dfdfdf;
+		width: 1px;
+		height: 100%;
+		position: fixed;
+	}
+}
+.Main {
+	width: 80%;
+}
+ul.sideBarMenu {
+	list-style-type: none;
+	padding: 0px;
+	margin: 0;
+	li {
+		margin: 0;
+		position: relative;
+		cursor: pointer;
+		border-bottom: 1px solid #dfdfdf;
+		padding: 5px;
+		margin: 0 20px;
+		min-height: 28px;
+		&:first-child {
+			border-top: 1px solid #dfdfdf;
+		}
+	}
+}
+span.menuLabel {
+	width: 100%;
+	width: 100%;
+	display: inline-block;
+	padding: 5px 0;
+	position: absolute;
+	width: 120%;
+	left: -20px;
+	&:hover {
+		background: #ecf6f4;
+	}
+}
+.menuLabelInner {
+	padding-left: 30px;
+}
+.Header {
+	display: flex;
+	justify-content: space-between;
+	padding: 12px;
+	box-shadow: 0px 0px 10px #c9c9c9;
+	position: relative;
+}
+.MainContent {
+	background: #ecf6f4;
+	width: 100%;
+	height: 100%;
+	box-sizing: border-box;
+	padding: 16px;
+	h1 {
+		margin: 0;
+	}
+}
+.InnerMainContent {
+	background: #fff;
+	width: 100%;
+	height: 100%;
+	box-shadow: 0px 0px 8px #c9c9c9;
+	border-radius: 4px;
+	padding: 8px 16px;
+	box-sizing: border-box;
+}
+.TableControls {
+	width: 100%;
+	text-align: right;
+	display: flex;
+	border-bottom: 1px solid #dfdfdf;
+	padding-bottom: 12px;
+	input {
+		padding: 8px;
+	}
+	button {
+		padding: 8px;
+		background-color: $background-color_2;
+		border: 2px solid #76a6b4;
+		border-radius: 5px;
+		width: 110px;
+		margin-left: 12px;
+		color: $color_3;
+	}
+	button.solid {
+		background: #002a57;
+		color: $color_4;
+		border: 1px solid #002a57;
+	}
+	.react-datepicker-wrapper {
+		input {
+			border: 2px solid #76a6b4;
+			border-radius: 5px;
+		}
+	}
+}
+.SearchBox {
+	display: flex;
+	padding-left: 16px;
+	input {
+		border-radius: 5px;
+		border: 2px solid #76a6b4;
+	}
+}
+.searchControls {
+	display: flex;
+}
+.tableTitle {
+	font-size: 20px;
+	font-weight: bold;
+	border-bottom: 1px solid #dfdfdf;
+	margin-bottom: 12px;
+	padding-bottom: 8px;
+}
+.TableControlsWrapper {
+	display: flex;
+	width: 100%;
+	justify-content: space-between;
+	align-items: center;
+}
+.SearchFilter {
+	display: flex;
+	.DateInput {
+		position: relative;
+		.calenderImg  {
+			position: absolute;
+			pointer-events: none;
+			top: 10px;
+			right: 8px;
+			svg {
+				width: 15px;
+			height: 15px;
+				g{
+					fill: #005974;
+				}
+			}
+		}
+	}
+	
+}
+.TableData {
+	table {
+		width: 100%;
+	}
+	th {
+		padding: 16px 12px;
+		text-align: center;
+		border-bottom: 1px solid #dfdfdf;
+	}
+	tr {
+		td {
+			background: #fafafa;
+			padding: 16px 12px;
+			text-align: center;
+			border-bottom: 1px solid #dfdfdf;
+		}
+	}
+	margin-top: 12px;
+	thead {
+		tr {
+			&:first-child {
+				display: none;
+			}
+		}
+	}
+}
+.editIconAction {
+	text-align: center;
+	img {
+		max-width: 20px;
+	}
+}
+.ActionControls {
+	display: flex;
+	width: 100%;
+	justify-content: space-evenly;
+	margin-bottom: 5px;
+}
+.ActionLabel {
+	width: 15%;
+	text-align: left;
+	padding: 2px 16px;
+}
+.ActionInput {
+	width: 70%;
+	select {
+		width: 100%;
+		padding: 12px;
+		border-radius: 5px;
+	}
+	textarea {
+		width: 95%;
+		border-radius: 5px;
+		font-family: $font-family_1;
+		padding: 8px 12px;
+	}
+	button {
+		width: 100%;
+		padding: 8px;
+		background: #0f132e;
+		color: $color_4;
+	}
+}
+.ActionInputSave {
+	button {
+		width: 150px;
+		padding: 8px;
+		background: #002a57;
+		color: $color_4;
+		border-radius: 5px;
+	}
+}
+.ActionControlsSave {
+	text-align: center;
+}
+.ExpandAreaAction {
+	background: #fff;
+	padding: 16px;
+	box-shadow: 0px 0px 4px #8e7b7b;
+	border-radius: 4px;
+}
+.CommentExpand {
+	background: #fff;
+	box-shadow: 0px 0px 4px #000;
+	border-radius: 5px;
+}
+.link {
+	color: $color_5;
+	text-decoration: underline;
+	display: inline-block;
+}
+.logo {
+	img {
+		max-width: 100px;
+	}
+	width: 100%;
+	text-align: center;
+	padding: 16px 0;
+}
+.FeedbackExpand {
+	background: #fff;
+	box-shadow: 0px 0px 4px #000;
+	border-radius: 5px;
+}
+.FeedbackExpandInner {
+	text-align: left;
+	padding: 2px 16px 20px 16px;
+}
+.feedbackTitle {
+	font-size: 18px;
+	font-weight: 500;
+	border-bottom: 1px solid #dfdfdf;
+	margin-bottom: 4px;
+	padding: 8px 4px 6px 0;
+}
+.feedbackDetails {
+	text-align: justify;
+}
+a.settingLink {
+	text-decoration: none;
+}
+.menuList {
+	list-style: none;
+	padding: 0;
+	background: #ecf6f4;
+	border-radius: 5px;
+	border: 1px solid #bdb9b9;
+	display: none;
+	position: absolute;
+	right: 0;
+}
+ul.menuList {
+	li {
+		padding: 8px 40px 8px 8px;
+		cursor: pointer;
+		text-align: left;
+		border-top: 1px solid #bdb9b9;
+		&:hover {
+			background: #c1c1c1;
+		}
+		&:first-child {
+			border-top: none;
+		}
+	}
+}
+.settingLink {
+	&:hover {
+		ul.menuList {
+			display: block !important;
+		}
+	}
+}
+span.settingsDropdown {
+	ul.menuGroup {
+		list-style: none;
+		padding: 0;
+		display: inline-block;
+		margin: 0;
+		padding-left: 12px;
+		color: $color_6;
+		cursor: pointer;
+	}
+}
+li.settingLink {
+	font-size: 10px;
+}
+button {
+	cursor: pointer;
+}
+button[disabled] {
+	background: #d5d4d4;
+	cursor: not-allowed;
+}
+.titleContent {
+	display: flex;
+	.icon {
+		transform: scale(1.25);
+		display: flex;
+		align-items: center;
+		padding: 0 16px;
+		&:after {
+			content: "";
+			width: 1px;
+			height: 75%;
+			background: #dfdfdf;
+			display: inline-block;
+		}
+		svg {
+			padding-right: 8px;
+		}
+	}
+}
+
+@media (prefers-reduced-motion: no-preference) {
+	.App-logo {
+		animation: App-logo-spin infinite 20s linear;
+	}
+}

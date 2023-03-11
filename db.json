@@ -1,0 +1,54 @@
+{
+  "users": [{
+      "id": 1,
+      "name": "Satheesh",
+      "email": "Sat@mail.com",
+      "adderss": "South street"
+  }, {
+      "id": 2,
+      "name": "John",
+      "email": "john@mail.com",
+      "adderss": "North street"
+  }, {
+      "id": 3,
+      "name": "Robert",
+      "email": "robert@mail.com",
+      "adderss": "East street" 
+  }, {
+      "id": 4,
+      "name": "Mani",
+      "email": "mani@mail.com",
+      "adderss": "West street"
+  },
+{
+  "id": 5,
+  "name": "Teja",
+  "email": "Teja@mail.com",
+  "adderss": "New york"
+}
+,
+{
+  "id": 6,
+  "name": "Ashish",
+  "email": "ashish@mail.com",
+  "adderss": "Pune"
+}
+],
+  "comments": [{
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+  },
+  {
+ 
+    "CommentDate":"10-5-2023",
+    	"CommentedBy":"Teja",
+      "Status":"open",	
+      "Comment":"this is dummy comment"
+}
+],
+  "profile": {
+      "name": "typicode"
+  },
+  "data":[{"createdDate":"2/11/2022","isWebPageHelpful":"Yes","feedback":"","status":"Open","updatedDate":"12/12/2019"},{"createdDate":"12/7/2020","isWebPageHelpful":"Yes","feedback":"","status":"Open","updatedDate":"5/7/2017"},{"createdDate":"1/6/2015","isWebPageHelpful":"Yes","feedback":"","status":"Open","updatedDate":"5/6/2016"},{"createdDate":"2/8/2017","isWebPageHelpful":"No","feedback":"","status":"Open","updatedDate":"8/11/2014"},{"createdDate":"12/23/2019","isWebPageHelpful":"Yes","feedback":"","status":"Open","updatedDate":"2/1/2022"},{"createdDate":"6/17/2013","isWebPageHelpful":"Yes","feedback":"","status":"Open","updatedDate":"1/3/2018"},{"createdDate":"7/6/2015","isWebPageHelpful":"Yes","feedback":"","status":"Open","updatedDate":"10/21/2016"},{"createdDate":"5/30/2015","isWebPageHelpful":"Yes","feedback":"","status":"Open","updatedDate":"11/19/2019"},{"createdDate":"12/8/2017","isWebPageHelpful":"Yes","feedback":"","status":"Open","updatedDate":"9/7/2019"},{"createdDate":"10/25/2018","isWebPageHelpful":"Yes","feedback":"","status":"Open","updatedDate":"10/19/2014"}]
+}
