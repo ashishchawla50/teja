@@ -1,5 +1,5 @@
 import logo from "./logo.svg";
-import "./App.css";
+import "./App.scss";
 import React, { useState, useEffect } from "react";
 // import { useTable } from "react-table";
 import Sidebar from "./Component/Sidebar";
