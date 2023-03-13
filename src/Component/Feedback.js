@@ -13,6 +13,8 @@ function Feedback(props) {
   const data = React.useMemo(() => makeData(10), []);
   const [tableData, setTableData] = React.useState(data);
   const [originalData, setOriginalData] = React.useState(data);
+  const [isDatePickerOpen, setIsDatePickerOpen] = React.useState(false);
+
   const columns = React.useMemo(
     () => [
       {
@@ -98,8 +100,19 @@ function Feedback(props) {
                   <DatePicker
                     selected={startDate}
                     onChange={(date) => setStartDate(date)}
+                    onCalendarOpen={() => {
+                      setIsDatePickerOpen(true);
+                    }}
+                    onCalendarClose={() => {
+                      setIsDatePickerOpen(false);
+                    }}
                   />
-                  <div className="calenderImg">
+                  <div
+                    className={
+                      "calenderImg" +
+                      (isDatePickerOpen ? " datePickerIsOpen " : " ")
+                    }
+                  >
                     <CalenderSVG />
                   </div>
                 </div>

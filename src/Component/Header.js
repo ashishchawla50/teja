@@ -2,6 +2,7 @@ import React from "react";
 import { HomeIcon } from "../Constant";
 
 function Header(props) {
+  const [isSettingsOpen, setIsSettingsOpen] = React.useState(false);
   return (
     <>
       <div className="Header">
@@ -18,7 +19,12 @@ function Header(props) {
           Hi <div className="link"> Teja </div>
           <span className="settingsDropdown">
             <ul className="menuGroup">
-              <li className="settingLink">
+              <li
+                className={"settingLink" + (isSettingsOpen ? " active " : " ")}
+                onClick={() => {
+                  setIsSettingsOpen(!isSettingsOpen);
+                }}
+              >
                 &#x25BC;
                 <ul className="menuList">
                   <li>Settings</li>

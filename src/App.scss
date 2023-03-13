@@ -189,6 +189,9 @@ span.menuLabel {
 				}
 			}
 		}
+		.calenderImg.datePickerIsOpen {
+			pointer-events: all !important;
+		}
 	}
 	
 }
@@ -337,12 +340,12 @@ ul.menuList {
 		}
 	}
 }
-.settingLink {
-	&:hover {
+.settingLink.active {
+
 		ul.menuList {
 			display: block !important;
 		}
-	}
+	
 }
 span.settingsDropdown {
 	ul.menuGroup {
@@ -357,6 +360,7 @@ span.settingsDropdown {
 }
 li.settingLink {
 	font-size: 10px;
+	padding: 4px 8px;
 }
 button {
 	cursor: pointer;
